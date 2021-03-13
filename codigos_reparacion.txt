@@ -37,3 +37,8 @@ git tag
 git tag -a v1.0.0 -m "proyecto semilla"
 git tag
 git push --tags
+
+//como usar heroku
+$ git add .
+$ git commit -am "make it better"
+$ git push heroku master
