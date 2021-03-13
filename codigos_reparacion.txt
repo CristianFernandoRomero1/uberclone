@@ -1,0 +1,25 @@
+app.get('/', function(req, res){
+    res.json({usuario:
+    'Hola mundo'});
+})
+
+app.post('/hola', function(req, res){
+
+    const {nombre, edad} = req.query;
+    //res.status(400).json({mensaje : `Hola ${req.query.nombre}, tienes ${edad} años`}) 
+    res.json({nombre : `${nombre}`, edad : `${edad}`})
+})
+app.post('/:id', function(req, res){
+    const {id} = req.params;
+    res.json({ID : `${id}`})
+})
+app.get('/token', function(req, res){
+    const {token} = req.headers;
+    res.json({token:token})
+})
+
+app.post('/user', function(req, res){
+
+
+    res.json({mensaje:Hola });
+})
