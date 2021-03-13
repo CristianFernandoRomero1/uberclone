@@ -9,8 +9,8 @@
     "socket.io-client": "^3.1.1"
   },
   "scripts": {
-    "serve": "nodemon server.js",
-    "start": "node app"
+    "serve": "nodemon index.js",
+    "start": "node index"
   },
   "type": "module"
 }
