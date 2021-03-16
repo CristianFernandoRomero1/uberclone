@@ -1,12 +1,15 @@
 import express from 'express';
 import cors from "cors";
+import dbconnection from "./database/config.js"
+import categoria from "./routes/categoria.js";
 import {} from "dotenv/config.js";
-import dbconnection from './database/config.js';
-
+import usuario from './routes/usuario.js';
+import articulo from './routes/articulo.js';
+import {} from "./models/articulo.js";
 class Server {
-    constructor(){
+    constructor() {
         //Servidor
-        this.port=process.env.PORT;
+        this.port = process.env.PORT;
         this.app = express();
         this.conectarBD();
         this.middlewares();
@@ -15,27 +18,27 @@ class Server {
         //Dar a conocer middlewar
         //Rutas
     }
-    routes(){
-
+    routes() {
+        this.app.use('/api/categoria', categoria);
+        this.app.use('/api/usuario', usuario);
+        this.app.use('/api/articulo', articulo)
     }
-    async conectarBD(){
+    async conectarBD() {
         await dbconnection();
 
     }
-    middlewares(){
+    middlewares() {
         this.app.use(express.json());
         this.app.use(cors());
         this.app.use(express.static('public'))
     }
-    listen(){
-        this.app.listen(this.port,()=>{
-            console.log(`Servidor corriendo en el puerto 3000 ${this.port}`);
+    listen() {
+        this.app.listen(this.port, () => {
+            console.log(`Servidor corriendo en el puerto ${this.port}`);
         })
     }
-  
+
 }
 
 
 export default Server
-
-
