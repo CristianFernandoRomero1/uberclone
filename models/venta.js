@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+/* import mongoose from "mongoose";
 const VentaSchema = new mongoose.Schema({
     categoria: { type: mongoose.Schema.Types.ObjectId, ref: 'Categoria', required: true },
     usuario: { type: mongoose.Schema.Types.ObjectId, ref: 'Usuario', required: true },
@@ -8,4 +8,4 @@ const VentaSchema = new mongoose.Schema({
     cantidad: { type: Number, default: 0 },
     createAt: { type: Date, default: Date.now }
 })
-export default mongoose.model('Venta', ArticuloSchema);
+export default mongoose.model('Venta', ArticuloSchema); */
