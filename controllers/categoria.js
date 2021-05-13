@@ -3,9 +3,10 @@ const categoriaControllers={
     categoriaGet : async(req, res) =>{
         const value = req.query.value;
         const categoria=await Categoria.find({$or:[{nombre:new RegExp(value, 'i')},{descripcion:new RegExp(value, 'i')}]}).sort({'createAt':1})
-    res.json({
+        console.log("dentro de categoria")
+     res.json({
         categoria
-    })
+    })   
     },
     categoriaGetById : async(req, res) =>{
         const {id}=req.params;

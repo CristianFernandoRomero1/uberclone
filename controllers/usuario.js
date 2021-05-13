@@ -1,6 +1,6 @@
 import Usuario from '../models/usuario.js'
 import bcryptjs from 'bcryptjs'
-import {generarJWT} from '../middleware/validar-jwt.js';
+import {generarJWT,validarJWT} from '../middleware/validar-jwt.js';
 
 const usuarioController = {
     usuarioGet:async(req,res)=>{
@@ -20,38 +20,46 @@ const usuarioController = {
         usuario.password=bcryptjs.hashSync(password, salt);
 
         usuario.save();
-        res.json({usuario})
+        //res.json({usuario})
+        return res.status(200).json({ nombre, email, password, rol });
     },
     login:async(req,res)=>{
-        const{email,password}=req.body;
+        const {email,password}=req.body;
+   
         const usuario=await Usuario.findOne({email:email});
        
         if(!usuario){
-            return res.json({
-                msg:'Email incorrecto'
-            })
+            return res.sendStatus(401)
         }
         else if(usuario.estado==="0"){
-            return res.json({
+            return res.sendStatus(403)
+            /* return res.json({
                 msg:'Cuenta inactiva'
-            })
+            }) */
         }
         const validarPassword=bcryptjs.compareSync(password,usuario.password);
         if(!validarPassword){
-            return res.json({
-                msg:'Password incorrecto'
-            })
+            return res.sendStatus(401)
         }
-        const token = await generarJWT(usuario.id);
+        const token = await generarJWT(usuario.id); 
+        var theUser = usuario.id;
         generarJWT()
         
-            res.json({
-                msg:'Inicio de sesión correcto :D',
-                usuario,
-                token
-
-            })
+           //return res.sendStatus(200).send("rfg");
+           return res.status(200).json({ token: token, theUser });
+          
         
+            /* res.send({token})
+             res.json({
+                 msg:'Inicio de sesión correcto :D',
+                usuario,
+                token 
+
+            }) */
+        
+    },
+    token:async(req,res,next)=>{
+        validarJWT(req,res,next);
     },
     usuarioPut:async(req, res)=>{
         const {id} = req.params;

@@ -7,6 +7,7 @@ router.get('/', usuarioController.usuarioGet);
 router.get('/:id', usuarioController.usuarioGetById);
 router.post('/', usuarioController.usuarioPost);
 router.post('/login', usuarioController.login);
+router.post('/token', usuarioController.token);
 
 router.put('/:id', usuarioController.usuarioPut);
 router.put('/activar/:id', usuarioController.usuarioPutActivar);
