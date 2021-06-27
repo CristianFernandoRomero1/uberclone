@@ -5,7 +5,7 @@ import categoria from "./routes/categoria.js";
 import {} from "dotenv/config.js";
 import usuario from './routes/usuario.js';
 import articulo from './routes/articulo.js';
-import compra from './routes/compra.js';
+import ingreso from './routes/ingreso.js';
 import persona from './routes/persona.js';
 import {} from "./models/articulo.js";
 class Server {
@@ -24,7 +24,7 @@ class Server {
         this.app.use('/api/categoria', categoria);
         this.app.use('/api/usuario', usuario);
         this.app.use('/api/articulo', articulo);
-        this.app.use('/api/compra', compra)
+        this.app.use('/api/ingreso', ingreso)
         this.app.use('/api/persona', persona)
     }
     async conectarBD() {
@@ -35,6 +35,8 @@ class Server {
         this.app.use(express.json());
         this.app.use(cors());
         this.app.use(express.static('public'))
+
+
     }
     listen() {
         this.app.listen(this.port, () => {

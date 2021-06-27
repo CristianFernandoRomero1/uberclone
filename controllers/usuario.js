@@ -46,7 +46,7 @@ const usuarioController = {
         generarJWT()
         
            //return res.sendStatus(200).send("rfg");
-           return res.status(200).json({ token: token, theUser });
+           return res.status(200).json({ token: token, theUser});
           
         
             /* res.send({token})

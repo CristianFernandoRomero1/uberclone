@@ -19,7 +19,8 @@ const categoriaControllers={
     categoriaPost : async (req, res)=>{
         const {nombre, descripcion} = req.body;
         const categoria = new Categoria({nombre, descripcion});
-     
+        console.log("dentro de post categoria")
+        console.log(categoria)
         /* res.json({nombre, descripcion}) */
         
         await categoria.save();
@@ -32,7 +33,8 @@ const categoriaControllers={
         const {id}=req.params;
         const {_id, estado,createAt,__v,...resto}=req.body;
         const categoria=await Categoria.findByIdAndUpdate(id, resto);
-
+        console.log(req.body);
+        console.log("Intento de actualizar esto");
         res.json({categoria})
     },
     categoriaPutActivar: async(req,res)=>{
@@ -50,6 +52,8 @@ const categoriaControllers={
     categoriaDelete: async(req,res)=>{
         const {id} = req.params;
         const categoria = await Categoria.findByIdAndDelete(id);
+        console.log("dentro de delete")
+        console.log(id)
         res.json({categoria})
 
     },

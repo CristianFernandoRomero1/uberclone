@@ -8,4 +8,4 @@ const VentaSchema = new mongoose.Schema({
     cantidad: { type: Number, default: 0 },
     createAt: { type: Date, default: Date.now }
 })
-export default mongoose.model('Venta', ArticuloSchema); */
+export default mongoose.model('Venta', VentaSchema); */

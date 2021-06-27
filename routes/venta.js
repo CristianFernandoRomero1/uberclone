@@ -6,4 +6,4 @@ const router = Router();
 router.get('/', usuarioController.usuarioGet);
 
 
-export default router; */
+export default router;  */

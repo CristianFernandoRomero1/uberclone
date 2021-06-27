@@ -3,9 +3,14 @@ import Persona from '../models/persona.js'
 
 const personaController = {
     personaGet: async(req, res) => {
-        const query = req.query.value;
-        const usuarios = await Persona.find({ $or: [{ nombre: new RegExp(query, 'i') }, { email: new RegExp(query, 'i') }, { rol: new RegExp(query, 'i') }] });
-        res.json({ usuarios })
+        const query = "persona";//req.query.value
+        const persona = await Persona.find({ $or: [{ tipoPersona: new RegExp(query, 'i') }] });
+        res.json({ persona })
+    },
+    personaProveedor: async(req, res) => {
+        //const query = "persona";//req.query.value
+        const persona = await Persona.find(); //{ $or: [{ tipoPersona: new RegExp(query, 'i') }] }
+        res.json({ persona })
     },
     personaGetById: async(req, res) => {
         const { id } = req.params;
@@ -13,8 +18,9 @@ const personaController = {
         res.json({ usuario })
     },
     personaPost: async(req, res) => {
-        const { tipoPersona, nombre, tipoDocumento, numeroDocumento, direccion, telefono, email, estado } = req.body;
-        const usuario = Persona({ tipoPersona, nombre, tipoDocumento, numeroDocumento, direccion, telefono, email, estado })
+        const { tipopersona, nombre, tipodocumento, numdocumento, direccion, telefono, email, estado } = req.body;
+        const usuario = Persona({ tipopersona, nombre, tipodocumento, numdocumento, direccion, telefono, email, estado })
+        console.log(usuario)
         usuario.save();
         res.json({ usuario })
     },
