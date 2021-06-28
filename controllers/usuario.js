@@ -24,6 +24,7 @@ const usuarioController = {
         return res.status(200).json({ nombre, email, password, rol });
     },
     login:async(req,res)=>{
+        console.log(req.body);
         const {email,password}=req.body;
    
         const usuario=await Usuario.findOne({email:email});
