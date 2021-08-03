@@ -1,0 +1,46 @@
+app.get('/', function(req, res){
+    res.json({usuario:
+    'Hola mundo'});
+})
+
+app.post('/hola', function(req, res){
+
+    const {nombre, edad} = req.query;
+    //res.status(400).json({mensaje : `Hola ${req.query.nombre}, tienes ${edad} años`}) 
+    res.json({nombre : `${nombre}`, edad : `${edad}`})
+})
+app.post('/:id', function(req, res){
+    const {id} = req.params;
+    res.json({ID : `${id}`})
+})
+app.get('/token', function(req, res){
+    const {token} = req.headers;
+    res.json({token:token})
+})
+
+app.post('/user', function(req, res){
+
+
+    res.json({mensaje:Hola });
+})
+
+
+//Cómo usar github
+git init
+git status
+git add .
+git status
+git commit -m "semilla express"
+git remote add origin https://github.com/CristianFernandoRomero1/adsi-2067725.git
+git push -u origin master
+git tag
+git tag -a v1.0.0 -m "proyecto semilla"
+git tag
+git push --tags
+
+//como usar heroku
+$ git add .
+$ git commit -am "make it better"
+$ git push heroku master
+
+ /* check('nombre', 'El nombre es obligatorio').not().isEmpty(), */
